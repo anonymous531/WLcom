@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{margin:0;padding:0;width:100%;}
+        ul li{list-style: none;margin-bottom: 2px;position: relative;}
+        div{display:inline-block;}
+        .song{position: absolute;left:8%;}
+        .name{position:absolute;left:65%;}
+    </style>
+    <script src="jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            var aLi = $('#list li');
+            var aInp = $('ul li input');
+            var oInp = $('#allselect');
+
+            function preColor(){
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].index = i;
+                    if(i%2==0){
+                        aLi[i].style.backgroundColor = '#f7ffff';
+                    }else{
+                        aLi[i].style.backgroundColor = '#fff';
+                    }
+                }
+            }
+            preColor();
+
+            for(var j=0;j<aLi.length;j++){
+                $(aLi[j]).mouseenter(function(){
+                 preColor();
+                 bgColor(this);
+                })
+            }
+
+            oInp.change(function(){
+                if(oInp.is(':checked')){
+                    for(var i=0;i<aLi.length;i++){
+                        bgColor(aLi[i]);
+                    }
+                    aInp.attr("checked","checked");
+                }else{
+                    preColor();
+                    aInp.attr("checked","false");
+                }
+            })
+
+            function bgColor(oli){
+                oli.style.backgroundColor = '#efefef';
+            }
+        })
+    </script>
+</head>
+<body>
+<ul id = 'list'>
+    <li>
+        <input type="checkbox">
+        <div class='song'>私奔</div>
+        <div class='name'>梁博</div>
+    </li>
+
+    <li>
+        <input type="checkbox">
+        <div class='song'>北京北京</div>
+        <div class='name'>梁博、黄勇</div>
+    </li>
+
+    <li>
+        <input type="checkbox">
+        <div class='song'>我爱你中国</div>
+        <div class='name'>梁博</div>
+    </li>
+
+    <li>
+        <input type="checkbox">
+        <div class='song'>花火</div>
+        <div class='name'>梁博</div>
+    </li>
+
+    <li>
+        <input type="checkbox">
+        <div class='song'>回来</div>
+        <div class='name'>梁博</div>
+    </li>
+
+    <li>
+        <input type="checkbox">
+        <div class='song'>爱要有你才完美</div>
+        <div class='name'>梁博、那英</div>
+    </li>
+</ul>
+
+<div>
+    <input type="checkbox" id="allselect">
+    <div>全选</div>
+</div>
+</body>
+</html>

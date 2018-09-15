@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{height:0;width:0;border:20px solid #fff;border-bottom-color:#ebebec ;display:inline-block}
+        span{color:orange;display:none;font-weight: bold}
+    </style>
+
+</head>
+<body>
+    <p>总体评价：</p>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <span>很差</span>
+    <span>较差</span>
+    <span>一般</span>
+    <span>很好</span>
+    <span>力荐</span>
+
+    <script>
+    window.onload = function(){
+        var aDiv = document.getElementsByTagName('div');
+        var aSpan = document.getElementsByTagName('span');
+
+        for(var i=0;i<aDiv.length;i++){
+            aDiv[i].index = i;
+        }
+
+        for(var j=0;j<aDiv.length;j++){
+            aDiv[j].onmouseover = function(){
+
+                for(var k=0;k<aDiv.length;k++){
+                    aDiv[k].style.borderBottomColor = '#ebebec';
+                }
+
+                if(this.index<2){
+                    for(var i=0;i<this.index+1;i++){
+                        aDiv[i].style.borderBottomColor = 'grey';
+                    }
+                }else{
+                    for(var i=0;i<this.index+1;i++){
+                        aDiv[i].style.borderBottomColor = 'orange';
+                    }
+                }
+
+                for(var j=0;j<aSpan.length;j++){
+                  if(j==this.index){
+                    aSpan[this.index].style.display = 'inline'; 
+                  }else{
+                    aSpan[j].style.display = 'none';
+                  }
+                }
+
+            }
+        }
+    }
+    </script>
+</body>
+</html>
